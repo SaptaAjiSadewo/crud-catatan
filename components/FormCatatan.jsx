@@ -3,7 +3,7 @@
 import { useState } from "react";
 import EditorQuill from "./EditorQuill";
 
-export default function FormCatatan({ setelahTambah }) {
+export default function FormCatatan({ setelahTambah = () => {} }) {
   const [judul, setJudul] = useState("");
   const [isi, setIsi] = useState("");
 
