@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import EditorQuill from "./EditorQuill";
 
-export default function FormCatatan() {
+export default function FormCatatan({ setelahTambah }) {
   const [judul, setJudul] = useState("");
   const [isi, setIsi] = useState("");
 
@@ -10,37 +11,37 @@ export default function FormCatatan() {
     await fetch("/api/catatan/tambah", {
       method: "POST",
       body: JSON.stringify({ judul, isi }),
+      headers: { "Content-Type": "application/json" },
     });
 
-    // reset input
     setJudul("");
     setIsi("");
+    setelahTambah && setelahTambah();
 
-    // refresh halaman
     window.location.reload();
   }
 
   return (
-    <div className="border p-4 mb-4 rounded">
-      <h2 className="font-bold mb-2">Tambah Catatan</h2>
+    <div className="p-4 border rounded mb-4">
+      <h2 className="text-lg font-semibold mb-2">Tambah Catatan</h2>
 
       <input
         className="border p-2 w-full mb-2"
-        placeholder="Judul"
+        placeholder="Judul catatan"
         value={judul}
         onChange={(e) => setJudul(e.target.value)}
       />
 
-      <textarea
-        className="border p-2 w-full mb-2"
-        placeholder="Isi catatan"
-        value={isi}
-        onChange={(e) => setIsi(e.target.value)}
-      ></textarea>
+      {/* editor custom */}
+      <EditorQuill
+        nilai={isi}
+        onChange={(val) => setIsi(val)}
+        className="mb-3"
+      />
 
       <button
         onClick={tambahCatatan}
-        className="bg-blue-600 text-black px-4 py-2 rounded"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
       >
         Simpan
       </button>

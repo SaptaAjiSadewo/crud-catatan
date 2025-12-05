@@ -32,9 +32,14 @@ export default function DaftarCatatan() {
 
       {data.map((c) => (
         <div key={c.id_catatan} className="border p-3 rounded mb-2">
-          <h3 className="font-bold">{c.judul}</h3>
-          <p>{c.isi}</p>
-
+          <div
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{ __html: c.judul }}
+          ></div>{" "}
+          <div
+            className="prose max-w-none"
+            dangerouslySetInnerHTML={{ __html: c.isi }}
+          ></div>
           <div className="flex gap-2 mt-2">
             {/* Tombol Ubah */}
             <button
