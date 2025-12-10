@@ -7,7 +7,7 @@ export default function LayoutAdmin({ children }) {
       <SidebarAdmin />
 
       {/* Konten kanan */}
-      <div className="flex-1 p-6 min-h-screen">{children}</div>
+      <div className="flex-1 p-6 min-h-screen bg-white">{children}</div>
     </div>
   );
 }

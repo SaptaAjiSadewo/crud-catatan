@@ -1,8 +1,14 @@
-export default function HalamanDashboard() {
+import DashboardAdmin from "@/components/admin/DashboardAdmin";
+
+export const metadata = {
+  title: "Dashboard Admin",
+  description: "Halaman ringkasan admin",
+};
+
+export default function PageAdmin() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-      <p>Selamat datang di dashboard pengelolaan aplikasi catatan.</p>
-    </div>
+    <>
+      <DashboardAdmin />
+    </>
   );
 }
